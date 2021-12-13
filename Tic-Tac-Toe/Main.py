@@ -2,7 +2,7 @@ import os
 import time
 from TicTacToe import TicTacToe
 from Agent import Agent
-first_player = input('Enter symbol for player : ')
+first_player = input('Enter x to play first : ')
 agent = Agent()
 game = TicTacToe(first_player)
 won = False
@@ -13,7 +13,7 @@ while(not won):
     size = game.getSize()
     if(current_player==1):
         print("AI's turn")
-        time.sleep(0.5)
+        time.sleep(1)
     else:
         print('Player'+str(current_player)+"'s turn")
         print('Enter row and column;')
@@ -41,6 +41,8 @@ while(not won):
                     won = True
                     break
                 if game.isDraw():
+                    os.system('clear')
+                    game.printGrid()
                     print('Draw!')
                     won = True
                     break
