@@ -1,7 +1,9 @@
 import os
+import time
 from TicTacToe import TicTacToe
-
+from Agent import Agent
 first_player = input('Enter symbol for player : ')
+agent = Agent()
 game = TicTacToe(first_player)
 won = False
 while(not won):
@@ -9,10 +11,19 @@ while(not won):
     current_player = game.player
     game.printGrid()
     size = game.getSize()
-    print('Player'+str(current_player)+"'s turn")
-    print('Enter row and column;')
+    if(current_player==1):
+        print("AI's turn")
+        time.sleep(0.5)
+    else:
+        print('Player'+str(current_player)+"'s turn")
+        print('Enter row and column;')
     while True:
-        r, c = map(str, input().split())
+        if current_player==0:
+            r, c = map(str, input().split())
+        else:
+            (r, c) = agent.select_action(game.grid, game.players[game.player],game.players[(game.player+1)%2])
+            r=str(r)
+            c=str(c)
         if (not r.isdigit() or not c.isdigit()):
             print('Invalid Selection')
         else:
@@ -22,7 +33,11 @@ while(not won):
                 if result==-2:
                     print("Not Vacant")
                 if result>-1:
-                    print('Player', str(current_player), ' has won!')
+                    if(current_player==0):
+                        print('You won!')
+                    else:
+                        print("AI won")
+                    game.printGrid()
                     won = True
                     break
                 if game.isDraw():
