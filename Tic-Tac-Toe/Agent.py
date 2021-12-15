@@ -16,7 +16,7 @@ class Agent:
                 return True
             if  grid[0][2] ==  grid[1][1] ==  grid[2][0] == player:
                 return True
-            return False
+        return False
     def select_action(self,grid:list, mine:str, next:str)->tuple:
         grid_copy = deepcopy(grid)
         available_moves=[]
