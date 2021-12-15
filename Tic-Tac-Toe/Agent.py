@@ -9,13 +9,13 @@ class Agent:
         for i in range(3):
             if  grid[i][0] == grid[i][1] ==  grid[i][2] == player:
                     return True
-            for i in range(3):
-                if  grid[0][i] ==  grid[1][i] ==  grid[2][i] == player:
-                    return True
-            if  grid[0][0] ==  grid[1][1] ==  grid[2][2] == player:
+        for i in range(3):
+            if  grid[0][i] ==  grid[1][i] ==  grid[2][i] == player:
                 return True
-            if  grid[0][2] ==  grid[1][1] ==  grid[2][0] == player:
-                return True
+        if  grid[0][0] ==  grid[1][1] ==  grid[2][2] == player:
+            return True
+        if  grid[0][2] ==  grid[1][1] ==  grid[2][0] == player:
+            return True
         return False
     def select_action(self,grid:list, mine:str, next:str)->tuple:
         grid_copy = deepcopy(grid)
