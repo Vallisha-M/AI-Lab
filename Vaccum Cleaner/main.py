@@ -1,30 +1,52 @@
-def check(stack):
-    if stack[-1]=="right" or stack[-1]=="left":
-        if stack[-2]=="left" or stack[-2]=="right" :
-            return False
-stack=[]
-flag=True
-count=1
-while flag:
-    percept=input("enter the percept : ")
-    location=input("enter the location : ")
-    if location=="A":
-        if percept=="dirty":
-            print("action: suck...turn right")
-            stack.append("suck")
-            stack.append("right")
+def clean(floor,row,col):
+    i,j,m,n = row,col,len(floor),len(floor[0])
+    goRight = goDown = True
+    cleaned = [not any(f) for f in floor]
+    while not all(cleaned):
+        while any(floor[i]):
+            printfloor(floor,i,j)
+            if floor[i][j]:
+                floor[i][j]=0
+                printfloor(floor,i,j)
+            if not any(floor[i]):
+                cleaned[i]=True
+                break
+            if j == n-1:
+                j -= 1
+                goRight=False
+            elif j == 0:
+                j += 1
+                goRight=True
+            else:
+                j += 1 if goRight else -1
+        if all(cleaned):
+            break
+        if i == m-1:
+            i -= 1
+            goDown=False
+        elif i == 0:
+            i += 1
+            goDown=True
         else:
-            print("action: turn right")
-            stack.append("right")
-    else:
-        if percept=="dirty":
-            print("action: suck.....turn left")
-            stack.append("suck")
-            stack.append("left")
-        else:
-            print("action: turn left")
-            stack.append("left")
-            count=count+1
-    if count>2:
-        flag=check(stack)
-print("both A and B are clean")
+            i += 1 if goDown else -1
+        if cleaned[i]:
+            printfloor(floor,i,j)
+
+def printfloor(floor,row,col):
+    for i in range(len(floor)):
+        for j in range(len(floor[i])):
+            if i == row and j == col:
+                print(f" *{floor[i][j]}* ", end = '')
+            else:
+                print(f"  {floor[i][j]}  ", end = '')
+        print()
+    print()
+
+floor = [[1, 0, 0, 1, 0],
+         [0, 1, 0, 1, 1],
+         [1, 0, 1, 0 ,0],
+         [1, 0, 0, 1, 0],
+         [1, 0, 0, 1, 1]]
+
+clean(floor, 0, 0)
+print("Cleaned")
