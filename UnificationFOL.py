@@ -103,35 +103,5 @@ def main():
     print("The substitutions are:")
     print([' / '.join(substitution) for substitution in substitutions])
 
-
-Test Input:
-Enter the first expression
-knows(f(x),y)
-Enter the second expression
-knows(J,John)
-The substitutions are:
-['J / f(x)', 'John / y']
 main()
-Enter the first expression
-Student(x)
-Enter the second expression
-Teacher(Rose)
-Cannot be unified as the predicates do not match!
-The substitutions are:
-[]
-main()
-Enter the first expression
-knows(John,x)
-Enter the second expression
-knows(y,Mother(y))
-The substitutions are:
-['John / y', 'Mother(y) / x']
-main()
-Enter the first expression
-like(A,y)
-Enter the second expression
-like(K,g(x))
-A and K are constants. Cannot be unified
-The substitutions are:
-[]
  
