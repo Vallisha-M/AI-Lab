@@ -103,31 +103,3 @@ def main():
     kb.query(q)
     kb.display()
 main()  
-"""        
-  Sample Input  :
-    
-
-Enter KB: (enter e to exit)
-missile(x)=>weapon(x)
-missile(M1)
-enemy(x,America)=>hostile(x)
-american(West)
-enemy(Nono,America)
-owns(Nono,M1)
-missile(x)&owns(Nono,x)=>sells(West,x,Nono)
-american(x)&weapon(y)&sells(x,y,z)&hostile(z)=>criminal(x)
-e
-Enter Query:
-criminal(x)
-Querying criminal(x):
-	1. criminal(West)
-All facts: 
-	1. missile(M1)
-	2. sells(West,M1,Nono)
-	3. hostile(Nono)
-	4. owns(Nono,M1)
-	5. weapon(M1)
-	6. criminal(West)
-	7. american(West)
-	8. enemy(Nono,America)
- """
