@@ -89,22 +89,7 @@ def main():
     fol = input()
     print("The CNF form of the given FOL is: ")
     print(Skolemization(fol_to_cnf(fol)))   
- 
-#Sample Input:
-#Test 1
-#Enter FOL:
-#∀x food(x) => likes(John, x)
-#The CNF form of the given FOL is: 
-#~ food(A) V likes(John, A)
-#Test 2
-#Enter FOL:
-#∀x[∃z[loves(x,z)]]
-#The CNF form of the given FOL is: 
-#[loves(x,B(x))]
-#Test 3
+
 main()
-#Enter FOL:
-#[american(x)^weapon(y)^sells(x,y,z)^hostile(z)] => criminal(x)
-#The CNF form of the given FOL is: 
-#[~american(x)V~weapon(y)V~sells(x,y,z)V~hostile(z)] V criminal(x)
+
  
