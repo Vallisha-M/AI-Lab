@@ -70,22 +70,8 @@ def resolution(kb, query):
 def main():
     print("Enter the kb:")
     kb = input()
-print("Enter the query:")
+    print("Enter the query:")
     query = input()
     resolution(kb,query)
 
-Test Input
-Enter the kb:
-Rv~P Rv~Q ~RvP ~RvQ
-Enter the query:
-R
-
-Step	|Clause	|Derivation	
-------------------------------
- 1.	| Rv~P	| Given.	
- 2.	| Rv~Q	| Given.	
- 3.	| ~RvP	| Given.	
- 4.	| ~RvQ	| Given.	
- 5.	| ~R	| Negated conclusion.	
- 6.	| 	| Resolved Rv~P and ~RvP to Rv~R, which is in turn null.                                 
-A contradiction is found when ~R is assumed as true. Hence, R is true.
+main()
